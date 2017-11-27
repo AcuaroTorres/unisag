@@ -10,6 +10,9 @@
 
     <title>@yield('title',config('app.name'))</title>
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <!-- Styles -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
@@ -21,7 +24,7 @@
         @yield('content')
         </div>
     </div>
-
+    <footer><center>www.floxtor.com</center></footer>
     <!-- Scripts -->    
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>

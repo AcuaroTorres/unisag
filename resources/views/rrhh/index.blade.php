@@ -8,7 +8,6 @@
 		<thead>
 			<th>ID</th>
 			<th>Nombre</th>
-			<th>Email</th>
 			<th>Roles</th>
 			<th>Accion</th>
 		</thead>
@@ -17,7 +16,6 @@
 			<tr>
 				<td>{{ $user->id }}</td>
 				<td>{{ $user->name }}</td>
-				<td>{{ $user->email }}</td>
 				<td>
 				@foreach($user->roles as $rol)
 					<span class="label label-<?=($rol->name == 'Admin')?'danger':'primary';?>"> {{ $rol->name }} </span>&nbsp;

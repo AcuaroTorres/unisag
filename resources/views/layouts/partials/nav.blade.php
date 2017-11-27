@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                {{ config('app.name') }}
             </a>
         </div>
 
@@ -21,6 +21,7 @@
             @auth
             <ul class="nav navbar-nav">
                 <li class="@if(@$ActiveMenu=='rrhh.users.index')active @endif"><a href="{{ route('rrhh.users.index') }}">RRHH</a></li>
+<li><a href="{{ route('register') }}">Register</a></li>
             </ul>
             @endauth
 
