@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -20,8 +20,25 @@
             <!-- Left Side Of Navbar -->
             @auth
             <ul class="nav navbar-nav">
-                <li class="@if(@$ActiveMenu=='rrhh.users.index')active @endif"><a href="{{ route('rrhh.users.index') }}">RRHH</a></li>
-<li><a href="{{ route('register') }}">Register</a></li>
+
+                <li class="dropdown @if(@$ActiveMenu=='rrhh.users.index' OR @$ActiveMenu=='rrhh.users.create')active @endif">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RRHH <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+
+                    <li class="@if(@$ActiveMenu=='rrhh.users.index')active @endif">
+                      <a href="{{ route('rrhh.users.index') }}">Listar Usuarios</a></li>
+
+                    <li class="@if(@$ActiveMenu=='rrhh.users.create')active @endif">
+                      <a href="{{ route('rrhh.users.create') }}">Crear Usuario</a></li>
+
+                  </ul>
+                </li>
+                
+                <!--
+                <li class="@if(@$ActiveMenu=='rrhh.users.index')active @endif">
+                    <a href="{{ route('rrhh.users.index') }}">RRHH</a></li>
+                -->
+
             </ul>
             @endauth
 

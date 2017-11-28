@@ -69,6 +69,10 @@ class RegisterController extends Controller
             'email'     => $data['email'],
             'password'  => bcrypt($data['password']),
         ]);
+
+        /**
+        * Establece el rol de usuario por defecto
+        */
         $user->roles()->attach(Role::where('name','Usuario')->first());
     }
 }

@@ -15,16 +15,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        @include('layouts/partials/nav')
+
+    @include('layouts/partials/nav')
+
+    <div class="container">
         
-        <div class="container">
         @yield('content')
-        </div>
-    </div>
-    <footer><center>www.floxtor.com</center></footer>
+                
+        <footer class="panel panel-default footer">
+            © Copyright
+        </footer>
+    </div>  
+
     <!-- Scripts -->    
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
