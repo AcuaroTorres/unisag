@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\rrhh;
 
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,9 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::orderBy('name','Asc')->paginate(10);
-        return view('rrhh/index',['users'=>$users,'ActiveMenu'=>'rrhh.users.index']);
+        return view('rrhh/index')
+            ->with('users', $users)
+            ->with('ActiveMenu','rrhh.users.index');
     }
 
     /**
@@ -26,7 +29,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('rrhh/create',['ActiveMenu'=>'rrhh.users.create']);
+        return view('rrhh/create')
+            ->with('ActiveMenu','rrhh.users.create');
     }
 
     /**
@@ -37,7 +41,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User($request->All());
+        $user->password = bcrypt($request->id);
+        $user->save();
+
+        $user->roles()->attach(Role::where('name','Usuario')->first());
+
+        session()->flash('info', 'El usuario '.$user->name.' ha sido creado.');
+
+        return redirect()->route('rrhh.users.index')
+            ->with('ActiveMenu','rrhh.users.index');
     }
 
     /**
@@ -57,9 +70,13 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('rrhh.edit')
+            ->with('user',$user)
+            ->with('ActiveMenu','rrhh.users.create')
+            ->with('ActiveSubMenu','rrhh.users.profile');
     }
 
     /**
@@ -69,9 +86,16 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
+
+        session()->flash('success', 'El usuario '.$user->name.' ha sido actualizado.');
+        
+        return redirect()->route('rrhh.users.index')
+            ->with('ActiveMenu','rrhh.users.index');
     }
 
     /**
@@ -80,8 +104,19 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        
+        /* Primero Limpiamos todos los roles */
+        $user->roles()->detach();
+
+        $user->delete();
+
+        session()->flash('success', 'El usuario '.$user->name.' ha sido eliminado');
+
+        return redirect()->route('rrhh.users.index')
+            ->with('ActiveMenu','rrhh.users.index');
     }
+
 }

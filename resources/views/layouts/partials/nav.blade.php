@@ -23,13 +23,13 @@
 
                 <li class="dropdown @if(@$ActiveMenu=='rrhh.users.index' OR @$ActiveMenu=='rrhh.users.create')active @endif">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RRHH <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-
-                    <li class="@if(@$ActiveMenu=='rrhh.users.index')active @endif">
-                      <a href="{{ route('rrhh.users.index') }}">Listar Usuarios</a></li>
+                  <ul class="dropdown-menu">                    
 
                     <li class="@if(@$ActiveMenu=='rrhh.users.create')active @endif">
                       <a href="{{ route('rrhh.users.create') }}">Crear Usuario</a></li>
+
+                    <li class="@if(@$ActiveMenu=='rrhh.users.index')active @endif">
+                      <a href="{{ route('rrhh.users.index') }}">Listar Usuarios</a></li>
 
                   </ul>
                 </li>
@@ -55,11 +55,17 @@
                         </a>
 
                         <ul class="dropdown-menu">
+
+                            <li class="">
+                                <a href="">Cambiar Clave</a></li>
+                            
+                            <li role="separator" class="divider"></li>
+
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    Logout
+                                    Cerrar Sesión
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

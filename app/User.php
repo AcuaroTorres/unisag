@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'email', 'password',
+        'id', 'dv', 'name', 'email', 'password',
     ];
 
     /**
@@ -62,5 +62,9 @@ class User extends Authenticatable
     */
     public function hasRole($role) {
       return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public function runFormat() {
+      return number_format($this->id, 0,'.','.') . '-' . $this->dv;
     }
 }

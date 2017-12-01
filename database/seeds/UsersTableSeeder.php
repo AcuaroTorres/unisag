@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
         $user->id = 15287582;
+        $user->dv = 7;
         $user->name = "Alvaro";
         $user->email = "a@b.c";
         $user->password = bcrypt('pluto');
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
         $user->id = 21097570;
+        $user->dv = 5;
         $user->name = "Aaron";
         $user->email = "aaron@torres.cl";
         $user->password = bcrypt('pluto');

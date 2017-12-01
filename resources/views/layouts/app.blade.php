@@ -22,7 +22,8 @@
     @include('layouts/partials/nav')
 
     <div class="container">
-        
+        @include('layouts/partials/errors')
+        @include('layouts/partials/flash_message')
         @yield('content')
                 
         <footer class="panel panel-default footer">

@@ -21,5 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'rrhh', 'as' => 'rrhh.'], function(){
 	Route::resource('users','rrhh\UsersController');
-
+	Route::get('users/{id}/roles', [
+		'uses' => 'rrhh\RolesController@index',
+		'as'   => 'roles.index'
+	]);
+	Route::post('users/{id}/roles', [
+		'uses' => 'rrhh\RolesController@attach',
+		'as'   => 'roles.index'
+	]);
 });
