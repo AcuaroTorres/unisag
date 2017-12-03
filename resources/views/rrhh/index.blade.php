@@ -20,7 +20,7 @@
 			<tbody>
 				@foreach($users as $user)
 				<tr>
-					<td>{{ $user->id }} - {{ $user->dv }}</td>
+					<td>{{ $user->runFormat() }}</td>
 					<td>{{ $user->name }}</td>
 					<td>
 					@foreach($user->roles as $rol)

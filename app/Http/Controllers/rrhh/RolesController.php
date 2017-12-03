@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\rrhh;
 
+use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Role;
-use App\User;
+
 
 class RolesController extends Controller
 {
@@ -16,7 +17,7 @@ class RolesController extends Controller
      */
     public function index($id)
     {
-        $user = User::find($id);
+        $user  = User::find($id);
         $roles = Role::All();
         return view('rrhh/role/manage')
             ->with('user', $user)

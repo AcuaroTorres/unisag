@@ -21,12 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'rrhh', 'as' => 'rrhh.'], function(){
 	Route::resource('users','rrhh\UsersController');
-	Route::get('users/{id}/roles', [
-		'uses' => 'rrhh\RolesController@index',
-		'as'   => 'roles.index'
-	]);
-	Route::post('users/{id}/roles', [
-		'uses' => 'rrhh\RolesController@attach',
-		'as'   => 'roles.index'
-	]);
+
+	Route::get('users/{id}/password', 'rrhh\UsersController@changePassword')->name('users.password');
+	Route::post('users/{id}/password','rrhh\UsersController@updatePassword')->name('users.password');
+
+	Route::get('users/{id}/roles', 'rrhh\RolesController@index')->name('roles.index');
+	Route::post('users/{id}/roles','rrhh\RolesController@attach')->name('roles.index');
 });

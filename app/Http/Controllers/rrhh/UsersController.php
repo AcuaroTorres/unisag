@@ -70,9 +70,8 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
         return view('rrhh.edit')
             ->with('user',$user)
             ->with('ActiveMenu','rrhh.users.create')
@@ -86,9 +85,9 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::find($id);
+        //$user = User::find($id);
         $user->fill($request->all());
         $user->save();
 
@@ -104,10 +103,8 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $user = User::find($id);
-        
+    public function destroy(User $user)
+    {        
         /* Primero Limpiamos todos los roles */
         $user->roles()->detach();
 
@@ -117,6 +114,14 @@ class UsersController extends Controller
 
         return redirect()->route('rrhh.users.index')
             ->with('ActiveMenu','rrhh.users.index');
+    }
+
+    public function changePassword(User $user) {
+        return view('rrhh.password');
+    }
+
+    public function updatePassword(Request $request, User $user) {
+        return view('rrhh.password');
     }
 
 }

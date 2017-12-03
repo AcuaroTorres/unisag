@@ -57,7 +57,7 @@
                         <ul class="dropdown-menu">
 
                             <li class="">
-                                <a href="">Cambiar Clave</a></li>
+                                <a href="{{ route('rrhh.users.password', Auth::user()->id) }}">Cambiar Clave</a></li>
                             
                             <li role="separator" class="divider"></li>
 
