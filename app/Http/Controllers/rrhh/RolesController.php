@@ -7,17 +7,25 @@ use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
 class RolesController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(User $user)
     {
-        $user  = User::find($id);
         $roles = Role::All();
         return view('rrhh/role/manage')
             ->with('user', $user)
@@ -27,21 +35,22 @@ class RolesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function attach(Request $request)
+    public function attach(Request $request, User $user)
     {
-        $user = User::find($request->user_id);
         $user->roles()->detach();
         foreach((array) $request->roles as $key => $rol) {
             $user->roles()->attach(Role::find($key));
         }
-        
+
         session()->flash('success', 'Se actualizaron los roles al usuario '.$user->name.'.');
-        
-        return redirect()->route('rrhh.roles.index',$user->id);
+
+        return redirect()->route('rrhh.roles.index', $user->id);
     }
 
 

@@ -20,11 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'rrhh', 'as' => 'rrhh.'], function(){
-	Route::resource('users','rrhh\UsersController');
+	Route::resource('users','rrhh\UsersController')->middleware('auth');
 
-	Route::get('users/{id}/password', 'rrhh\UsersController@changePassword')->name('users.password');
-	Route::post('users/{id}/password','rrhh\UsersController@updatePassword')->name('users.password');
+	Route::get('users/{user}/password', 'rrhh\UsersController@changePassword')->name('users.password')->middleware('role:Usuario');
+	Route::post('users/{user}/password','rrhh\UsersController@updatePassword')->name('users.password');
 
-	Route::get('users/{id}/roles', 'rrhh\RolesController@index')->name('roles.index');
-	Route::post('users/{id}/roles','rrhh\RolesController@attach')->name('roles.index');
+	Route::get('users/{user}/roles', 'rrhh\RolesController@index')->name('roles.index');
+	Route::post('users/{user}/roles','rrhh\RolesController@attach')->name('roles.index');
 });
