@@ -25,11 +25,18 @@
 		</div>
 
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-			<input type="submit" name="" class="btn btn-primary" value="Actualizar">
+			<div class="col-sm-offset-2 col-sm-2">
+				<input type="submit" name="" class="btn btn-primary" value="Actualizar">
 			</div>
-		</div>
+			</form>
 
-	</form>
+			<div class="col-sm-2 pull-right">
+				<form method="POST" action="{{ route('rrhh.users.destroy', $user->id) }}" style="display: inline;">
+					{{ method_field('DELETE') }} {{ csrf_field() }}
+					<button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Eliminar</button>
+				</form>
+			</div>
+			
+		</div>
 
 @endsection

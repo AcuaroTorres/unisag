@@ -5,7 +5,10 @@ namespace App\Http\Controllers\rrhh;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\rrhh\updatePassword;
+//use Hash;
 
 class UsersController extends Controller
 {
@@ -29,8 +32,7 @@ class UsersController extends Controller
     {
         $users = User::orderBy('name','Asc')->paginate(10);
         return view('rrhh/index')
-            ->with('users', $users)
-            ->with('ActiveMenu','rrhh.users.index');
+            ->with('users', $users);
     }
 
     /**
@@ -40,8 +42,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('rrhh/create')
-            ->with('ActiveMenu','rrhh.users.create');
+        return view('rrhh/create');
     }
 
     /**
@@ -60,8 +61,7 @@ class UsersController extends Controller
 
         session()->flash('info', 'El usuario '.$user->name.' ha sido creado.');
 
-        return redirect()->route('rrhh.users.index')
-            ->with('ActiveMenu','rrhh.users.index');
+        return redirect()->route('rrhh.users.index');
     }
 
     /**
@@ -84,9 +84,7 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         return view('rrhh.edit')
-            ->with('user',$user)
-            ->with('ActiveMenu','rrhh.users.create')
-            ->with('ActiveSubMenu','rrhh.users.profile');
+            ->with('user',$user);
     }
 
     /**
@@ -98,14 +96,12 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //$user = User::find($id);
         $user->fill($request->all());
         $user->save();
 
         session()->flash('success', 'El usuario '.$user->name.' ha sido actualizado.');
         
-        return redirect()->route('rrhh.users.index')
-            ->with('ActiveMenu','rrhh.users.index');
+        return redirect()->route('rrhh.users.index');
     }
 
     /**
@@ -123,16 +119,38 @@ class UsersController extends Controller
 
         session()->flash('success', 'El usuario '.$user->name.' ha sido eliminado');
 
-        return redirect()->route('rrhh.users.index')
-            ->with('ActiveMenu','rrhh.users.index');
+        return redirect()->route('rrhh.users.index');
     }
 
-    public function changePassword(User $user) {
-        return view('rrhh.password');
+
+    /**
+     * Show the form for change password.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function editPassword() {
+        return view('rrhh.edit_password');
     }
 
-    public function updatePassword(Request $request, User $user) {
-        return view('rrhh.password');
+    /**
+     * Update the current loged user password
+     *
+     * @param  \Illuminate\Http\updatePassword  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePassword(updatePassword $request) {
+        if(Hash::check($request->password, Auth()->user()->password)) {
+            Auth()->user()->password = bcrypt($request->newpassword);
+            Auth()->user()->save();
+
+            session()->flash('success', 'Su clave ha sido cambiada con éxito.');
+        }
+        else {
+            session()->flash('danger', 'La clave actual es erronea.');
+        }
+        
+        return redirect()->route('rrhh.users.password.edit');
     }
 
 }

@@ -28,13 +28,8 @@
 					@endforeach
 					</td>
 					<td>
-					<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-warning">
-					<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
-					<form method="POST" action="{{ route('rrhh.users.destroy', $user->id) }}" style="display: inline;">
-						{{ method_field('DELETE') }} {{ csrf_field() }}
-						<button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
-					</form>
-					
+						<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-warning">
+						<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>			
 					</td>
 				</tr>
 				@endforeach

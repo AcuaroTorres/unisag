@@ -29,9 +29,7 @@ class RolesController extends Controller
         $roles = Role::All();
         return view('rrhh/role/manage')
             ->with('user', $user)
-            ->with('roles', $roles)
-            ->with('ActiveMenu','rrhh.users.index')
-            ->with('ActiveSubMenu','rrhh.roles.index');
+            ->with('roles', $roles);
     }
 
     /**

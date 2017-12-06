@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<form method="POST" class="form-horizontal" action="{{ route('rrhh.users.update', Auth::user()->id) }}">
+	<form method="POST" class="form-horizontal" action="{{ route('rrhh.users.password.update') }}">
 		{{ method_field('PUT') }} {{ csrf_field() }}
 
 		<h3>Cambiar clave</h3>
@@ -12,12 +12,17 @@
 
 		<div class="form-group">
 			<label class="col-sm-2 control-label" for="password">Clave Actual</label>
-			<div class="col-sm-8"><input type="password" class="form-control" name="password"></div>
+			<div class="col-sm-4"><input type="password" class="form-control" name="password"></div>
 		</div>
 
 		<div class="form-group">
 			<label class="col-sm-2 control-label" for="newpassword">Nueva Clave</label>
-			<div class="col-sm-8"><input type="password" class="form-control" name="newpassword"></div>
+			<div class="col-sm-4"><input type="password" class="form-control" name="newpassword"></div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="newpassword_confirm">Confirmar Nueva Clave</label>
+			<div class="col-sm-4"><input type="password" class="form-control" name="newpassword_confirm"></div>
 		</div>
 
 		<div class="form-group">
@@ -27,5 +32,4 @@
 		</div>
 
 	</form>
-
 @endsection

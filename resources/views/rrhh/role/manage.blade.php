@@ -12,7 +12,7 @@
   	</div>
   	<div class="panel-body">
   		
-  		<form class="form-horizontal" method="POST" action="{{ route('rrhh.roles.index',$user->id) }}">
+  		<form class="form-horizontal" method="POST" action="{{ route('rrhh.roles.attach',$user->id) }}">
   			{{ csrf_field() }}
 			<input type="hidden" name="user_id" value="{{ $user->id }}">
 		

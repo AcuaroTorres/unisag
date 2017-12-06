@@ -21,23 +21,18 @@
             @auth
             <ul class="nav navbar-nav">
 
-                <li class="dropdown @if(@$ActiveMenu=='rrhh.users.index' OR @$ActiveMenu=='rrhh.users.create')active @endif">
+                <li class="dropdown @if(Route::currentRouteName()=='rrhh.users.index' OR Route::currentRouteName()=='rrhh.users.create')active @endif">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RRHH <span class="caret"></span></a>
                   <ul class="dropdown-menu">                    
 
-                    <li class="@if(@$ActiveMenu=='rrhh.users.create')active @endif">
+                    <li class="@if(Route::currentRouteName()=='rrhh.users.create')active @endif">
                       <a href="{{ route('rrhh.users.create') }}">Crear Usuario</a></li>
 
-                    <li class="@if(@$ActiveMenu=='rrhh.users.index')active @endif">
+                    <li class="@if(Route::currentRouteName()=='rrhh.users.index')active @endif">
                       <a href="{{ route('rrhh.users.index') }}">Listar Usuarios</a></li>
 
                   </ul>
                 </li>
-                
-                <!--
-                <li class="@if(@$ActiveMenu=='rrhh.users.index')active @endif">
-                    <a href="{{ route('rrhh.users.index') }}">RRHH</a></li>
-                -->
 
             </ul>
             @endauth
@@ -46,18 +41,18 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
+                    <?php /* <li><a href="{{ route('register') }}">Register</a></li> */ ?>
                 @else
-                    <li class="dropdown">
+                    <li class="dropdown @if(Route::currentRouteName()=='rrhh.password.edit')active @endif">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu">
 
-                            <li class="">
-                                <a href="{{ route('rrhh.users.password', Auth::user()->id) }}">Cambiar Clave</a></li>
+                            <li class="@if(Route::currentRouteName()=='rrhh.users.password.edit')active @endif">
+                                <a href="{{ route('rrhh.users.password.edit') }}">Cambiar Clave</a></li>
                             
                             <li role="separator" class="divider"></li>
 
