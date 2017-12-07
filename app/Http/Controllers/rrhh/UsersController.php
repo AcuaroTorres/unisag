@@ -101,7 +101,7 @@ class UsersController extends Controller
         $user->save();
 
         session()->flash('success', 'El usuario '.$user->name.' ha sido actualizado.');
-        
+
         return redirect()->route('rrhh.users.index');
     }
 

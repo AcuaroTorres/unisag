@@ -12,14 +12,14 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
-                            <label for="id" class="col-md-4 control-label">Run</label>
+                            <label for="run" class="col-md-4 control-label">Run</label>
 
                             <div class="col-md-6">
-                                <input id="id" type="integer" class="form-control" name="id" value="{{ old('id') }}" required autofocus>
+                                <input id="run" type="integer" class="form-control" name="run" value="{{ old('run') }}" required autofocus>
 
-                                @if ($errors->has('id'))
+                                @if ($errors->has('run'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('id') }}</strong>
+                                        <strong>{{ $errors->first('run') }}</strong>
                                     </span>
                                 @endif
                             </div>
