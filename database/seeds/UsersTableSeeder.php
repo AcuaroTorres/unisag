@@ -34,5 +34,9 @@ class UsersTableSeeder extends Seeder
         $user->password = bcrypt('pluto');
         $user->save();
         $user->roles()->attach($usuario_role);
+
+        factory(App\User::class, 20)->create()->each(function ($u) {
+            $u->roles()->attach(Role::where('name','Usuario')->first());
+        });
     }
 }

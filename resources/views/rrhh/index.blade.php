@@ -4,39 +4,49 @@
 
 @section('content')
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-    	<h3 class="panel-title">Lista de usuarios</h3>
-  	</div>
-  	<div class="panel-body">
-
-		<table class="table table-striped">
-			<thead>
-				<th>ID</th>
-				<th>Nombre</th>
-				<th>Roles</th>
-				<th>Accion</th>
-			</thead>
-			<tbody>
-				@foreach($users as $user)
-				<tr>
-					<td>{{ $user->runFormat() }}</td>
-					<td>{{ $user->name }}</td>
-					<td>
-					@foreach($user->roles as $rol)
-						<span class="label label-<?=($rol->name == 'Admin')?'danger':'primary';?>"> {{ $rol->name }} </span>&nbsp;
-					@endforeach
-					</td>
-					<td>
-						<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-warning">
-						<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>			
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
-		{{ $users->render() }}
-		
+<form method="GET" action="{{ route('rrhh.users.index') }}" class="navbar_form pull-right">
+	<div class="col-md-3 pull-right">
+		<div class="input-group">
+			<input type="text" class="form-control" name="name" placeholder="Buscar usuario por nombre">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="submit">
+			    	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+			</span>
+		</div>
 	</div>
-</div>
+</form>
+
+<br><br>
+
+
+
+<table class="table table-striped">
+	<thead>
+		<th>ID</th>
+		<th>Nombre</th>
+		<th>Roles</th>
+		<th>Accion</th>
+	</thead>
+	<tbody>
+		@foreach($users as $user)
+		<tr>
+			<td>{{ $user->runFormat() }}</td>
+			<td>{{ $user->name }}</td>
+			<td>
+			@foreach($user->roles as $rol)
+				<span class="label label-<?=($rol->name == 'Admin')?'danger':'primary';?>"> {{ $rol->name }} </span>&nbsp;
+			@endforeach
+			</td>
+			<td>
+				<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-warning">
+				<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>			
+			</td>
+		</tr>
+		@endforeach
+	</tbody>
+</table>
+{{ $users->render() }}
+		
+
 @endsection

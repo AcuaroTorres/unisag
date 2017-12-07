@@ -59,6 +59,17 @@
                 text-transform: uppercase;
             }
 
+            footer {
+                color: #a4a4a4;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -71,8 +82,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">Iniciar Sesión</a>
                     @endauth
                 </div>
             @endif
@@ -82,13 +92,7 @@
                     {{ config('app.name') }}
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <footer>© Sistema de administración general.</footer>
             </div>
         </div>
     </body>

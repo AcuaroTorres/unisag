@@ -17,10 +17,19 @@ $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
     return [
-    	'id'   => $faker->id,
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+    	'id'   		=> $faker->ean8,
+    	'dv' 		=> $faker->randomDigitNotNull,
+        'name' 		=> $faker->name,
+        'email' 	=> $faker->unique()->safeEmail,
+        'password' 	=> $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
+
+	/*
+    $table->integer('id')->unique();
+    $table->unsignedTinyInteger('dv');
+    $table->string('name');
+    $table->string('email')->unique();
+    $table->string('password');
+    */
 });

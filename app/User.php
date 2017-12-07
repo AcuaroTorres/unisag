@@ -67,4 +67,10 @@ class User extends Authenticatable
     public function runFormat() {
       return number_format($this->id, 0,'.','.') . '-' . $this->dv;
     }
+
+    public function scopeSearch($query, $name) {
+      if($name != "") {
+        return $query->where('name', "LIKE", "%$name%");  
+      }  
+    }
 }
