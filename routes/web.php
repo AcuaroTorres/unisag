@@ -24,6 +24,7 @@ Route::prefix('rrhh')->as('rrhh.')->group(function(){
 	Route::prefix('users')->as('users.password.')->group(function(){
 		Route::get('password', 'rrhh\UsersController@editPassword')->name('edit');
 		Route::put('password', 'rrhh\UsersController@updatePassword')->name('update');
+		Route::put('password', 'rrhh\UsersController@resetPassword')->name('reset');
 	});
 
 	Route::resource('users','rrhh\UsersController')->middleware('auth');
