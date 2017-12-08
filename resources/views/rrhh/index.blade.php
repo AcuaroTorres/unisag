@@ -5,7 +5,7 @@
 @section('content')
 
 <form method="GET" action="{{ route('rrhh.users.index') }}" class="navbar_form pull-right">
-	<div class="col-md-3 pull-right">
+	<div class="col-md-8 pull-right">
 		<div class="input-group">
 			<input type="text" class="form-control" name="name" placeholder="Buscar usuario por nombre">
 			<span class="input-group-btn">
@@ -23,7 +23,7 @@
 
 <table class="table table-striped">
 	<thead>
-		<th>ID</th>
+		<th>RUN</th>
 		<th>Nombre</th>
 		<th>Roles</th>
 		<th>Accion</th>

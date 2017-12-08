@@ -38,11 +38,11 @@ class updatePassword extends FormRequest
     public function messages()
     {
         return [
-            'password.required'             => 'Clave Actual: es requerida.',
-            'newpassword.required'          => 'Nueva Clave: es requerida.',
-            'newpassword.min'               => 'Nueva Clave: debe tener más de 4 caracteres.',
-            'newpassword.required_confirm'  => 'Confirmar Nueva Clave: es requerida.',
-            'newpassword.same'              => 'Nueva Clave y Confirmar Nueva Clave: no coinciden.',
+            'password.required'             => '"Clave Actual" es requerida.',
+            'newpassword.required'          => '"Nueva Clave" es requerida.',
+            'newpassword.min'               => '"Nueva Clave" debe tener más de 4 caracteres.',
+            'newpassword_confirm.required'  => '"Confirmar Nueva Clave" es requerida.',
+            'newpassword_confirm.same'      => '"Nueva Clave" y "Confirmar Nueva Clave" no coinciden.',
         ];
     }
 }

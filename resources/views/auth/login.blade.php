@@ -11,7 +11,7 @@
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('run') ? ' has-error' : '' }}">
                             <label for="run" class="col-md-4 control-label">Run</label>
 
                             <div class="col-md-6">

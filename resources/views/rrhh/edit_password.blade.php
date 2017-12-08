@@ -10,19 +10,34 @@
 		<h3>Cambiar clave</h3>
 		<br>
 
-		<div class="form-group">
+		<div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
 			<label class="col-sm-2 control-label" for="password">Clave Actual</label>
-			<div class="col-sm-4"><input type="password" class="form-control" name="password"></div>
+			<div class="col-sm-4"><input type="password" class="form-control" name="password" autofocus required="required"></div>
+			 @if ($errors->has('password'))
+			    <span class="help-block">
+			        <strong>{{ $errors->first('password') }}</strong>
+			    </span>
+			@endif
 		</div>
 
-		<div class="form-group">
+		<div class="form-group {{ $errors->has('newpassword') ? 'has-error' : '' }}">
 			<label class="col-sm-2 control-label" for="newpassword">Nueva Clave</label>
-			<div class="col-sm-4"><input type="password" class="form-control" name="newpassword"></div>
+			<div class="col-sm-4"><input type="password" class="form-control" name="newpassword" required="required"></div>
+			@if ($errors->has('newpassword'))
+			    <span class="help-block">
+			        <strong>{{ $errors->first('newpassword') }}</strong>
+			    </span>
+			@endif
 		</div>
 
-		<div class="form-group">
+		<div class="form-group {{ $errors->has('newpassword_confirm') ? 'has-error' : '' }}">
 			<label class="col-sm-2 control-label" for="newpassword_confirm">Confirmar Nueva Clave</label>
-			<div class="col-sm-4"><input type="password" class="form-control" name="newpassword_confirm"></div>
+			<div class="col-sm-4"><input type="password" class="form-control" name="newpassword_confirm" required="required"></div>
+			@if ($errors->has('newpassword_confirm'))
+			    <span class="help-block">
+			        <strong>{{ $errors->first('newpassword_confirm') }}</strong>
+			    </span>
+			@endif
 		</div>
 
 		<div class="form-group">
