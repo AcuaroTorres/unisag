@@ -25,7 +25,7 @@
 	<thead>
 		<th>RUN</th>
 		<th>Nombre</th>
-		<th>Roles</th>
+		<th class="hidden-xs">Roles</th>
 		<th>Accion</th>
 	</thead>
 	<tbody>
@@ -33,14 +33,14 @@
 		<tr>
 			<td>{{ $user->runFormat() }}</td>
 			<td>{{ $user->name }}</td>
-			<td>
+			<td class="hidden-xs">
 			@foreach($user->roles as $rol)
 				<span class="label label-<?=($rol->name == 'Admin')?'danger':'primary';?>"> {{ $rol->name }} </span>&nbsp;
 			@endforeach
 			</td>
 			<td>
 				<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-warning">
-				<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>			
+				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>			
 			</td>
 		</tr>
 		@endforeach

@@ -14,31 +14,36 @@
     {{ csrf_field() }}
 
     <div class="form-group">
-      <label for="inputId" class="col-sm-2 control-label">Id:</label>
-      <div class="col-sm-2">
+      <label for="inputId" class="col-xs-2 control-label">Id:</label>
+      <div class="col-xs-6 col-md-4">
         <input type="number" name="id" id="inputId" class="form-control" value="min="{6" min="{6"} max="99999999" step="" required="required" title="">
       </div>
-      <div class="col-sm-1">
+
+      <div class="col-xs-1 col-md-1">
+        -
+      </div>
+
+      <div class="col-xs-3 col-md-1">
         <input type="text" name="dv" id="inputDv" class="form-control" required="required" title="Digito verificador">
       </div>
     </div>
     
     <div class="form-group">
-      <label for="nombre" class="col-sm-2 control-label">Nombre:</label>
-      <div class="col-sm-4">
+      <label for="nombre" class="col-xs-2 control-label">Nombre:</label>
+      <div class="col-xs-10 col-md-4">
         <input type="text" name="name" id="input" class="form-control" value="" required="required" title="">
       </div>
     </div>
 
     <div class="form-group">
-      <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
-      <div class="col-sm-4">
+      <label for="inputEmail" class="col-xs-2 control-label">Email:</label>
+      <div class="col-xs-10 col-md-4">
         <input type="text" name="email" id="inputEmail" class="form-control" value="" required="required" title="">
       </div>
     </div>
 
     <div class="form-group">
-      <div class="col-sm-4 col-md-offset-2">
+      <div class="col-xs-4 col-md-offset-2">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
