@@ -151,7 +151,22 @@ class UsersController extends Controller
             session()->flash('danger', 'La clave actual es erronea.');
         }
         
-        return redirect()->route('rrhh.users.password.edit');
+        return redirect()->route('password.edit');
+    }
+
+    /**
+     * Reset user password.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function resetPassword(User $user) {
+        $user->password = bcrypt($user->id);
+        $user->save();
+
+        session()->flash('success', 'La clave ha sido reseteada a: '.$user->id);
+        
+        return redirect()->route('rrhh.users.edit', $user->id);
     }
 
 }

@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<form method="POST" class="form-horizontal" action="{{ route('rrhh.users.password.update') }}">
+	<form method="POST" class="form-horizontal" action="{{ route('password.update') }}">
 		{{ method_field('PUT') }} {{ csrf_field() }}
 
 		<h3>Cambiar clave</h3>

@@ -25,7 +25,9 @@
         @include('layouts/partials/errors')
         @include('layouts/partials/flash_message')
         @yield('content')
-                
+        
+        <br>
+
         <footer class="panel panel-default footer">
             © Copyright
         </footer>

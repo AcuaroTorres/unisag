@@ -40,8 +40,8 @@
 
 			<div class="col-sm-2 pull-right">
 				<form method="POST" action="{{ route('rrhh.users.password.reset', $user->id) }}" style="display: inline;">
-					{{ method_field('DELETE') }} {{ csrf_field() }}
-					<button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Restaurar clave</button>
+					{{ method_field('PUT') }} {{ csrf_field() }}
+					<button class="btn btn-primary"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Restaurar clave</button>
 				</form>
 			</div>
 		</div>

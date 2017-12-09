@@ -51,8 +51,8 @@
 
                         <ul class="dropdown-menu">
 
-                            <li class="@if(Route::currentRouteName()=='rrhh.users.password.edit')active @endif">
-                                <a href="{{ route('rrhh.users.password.edit') }}">Cambiar Clave</a></li>
+                            <li class="@if(Route::currentRouteName()=='password.edit')active @endif">
+                                <a href="{{ route('password.edit') }}">Cambiar Clave</a></li>
                             
                             <li role="separator" class="divider"></li>
 

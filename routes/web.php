@@ -19,17 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::prefix('password')->as('password.')->group(function(){
+	Route::get('edit', 'rrhh\UsersController@editPassword')->name('edit');
+	Route::put('update', 'rrhh\UsersController@updatePassword')->name('update');
+});
+
 Route::prefix('rrhh')->as('rrhh.')->group(function(){
+	Route::put('users/{user}/password', 'rrhh\UsersController@resetPassword')->name('users.password.reset');
 
-	Route::prefix('users')->as('users.password.')->group(function(){
-		Route::get('password', 'rrhh\UsersController@editPassword')->name('edit');
-		Route::put('password', 'rrhh\UsersController@updatePassword')->name('update');
-		Route::put('password', 'rrhh\UsersController@resetPassword')->name('reset');
-	});
-
-	Route::resource('users','rrhh\UsersController')->middleware('auth');
-	
-	
 	Route::get('users/{user}/roles', 'rrhh\RolesController@index')->name('roles.index');
 	Route::post('users/{user}/roles','rrhh\RolesController@attach')->name('roles.attach');
+	
+	Route::resource('users','rrhh\UsersController')->middleware('auth');
 });
