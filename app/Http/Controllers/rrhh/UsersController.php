@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\rrhh\updatePassword;
-//use Hash;
 
 class UsersController extends Controller
 {
@@ -32,6 +31,13 @@ class UsersController extends Controller
     {
         //$users = User::orderBy('name','Asc')->paginate(10);
         $users = User::Search($request->get('name'))->orderBy('name','Asc')->paginate(15);
+
+        /*
+        $users->each(function($users){
+            $users->roles;
+            
+        });
+        */
         return view('rrhh/index')
             ->with('users', $users);
     }

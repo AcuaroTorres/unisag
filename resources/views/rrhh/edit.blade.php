@@ -25,8 +25,9 @@
 		</div>
 
 		<div class="form-group">
-			<div class="col-xs-3 col-sm-2 col-sm-offset-2">
-				<button type="submit" name="" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Actualizar</button>
+			<div class="col-xs-4 col-sm-2 col-sm-offset-2">
+				<button type="submit" class="btn btn-sm btn-primary">
+					<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Actualizar</button>
 			</div>
 			
 			</form>
@@ -34,14 +35,14 @@
 			<div class="col-xs-4 col-sm-2">
 				<form method="POST" action="{{ route('rrhh.users.password.reset', $user->id) }}" style="display: inline;">
 					{{ method_field('PUT') }} {{ csrf_field() }}
-					<button class="btn btn-default"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restaurar clave</button>
+					<button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restaurar clave</button>
 				</form>
 			</div>
 
-			<div class="col-xs-3 col-sm-2">
+			<div class="col-xs-4 col-sm-2">
 				<form method="POST" action="{{ route('rrhh.users.destroy', $user->id) }}" style="display: inline;">
 					{{ method_field('DELETE') }} {{ csrf_field() }}
-					<button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</button>
+					<button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</button>
 				</form>
 			</div>
 		</div>
