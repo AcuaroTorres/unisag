@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
         $user->roles()->attach($usuario_role);
 
-        factory(App\User::class, 10)->create()->each(function ($u) {
+        factory(App\User::class, 5)->create()->each(function ($u) {
             $u->roles()->attach(Role::where('name','Usuario')->first());
         });
     }
