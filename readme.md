@@ -7,6 +7,5 @@ UNISAG es un esqueleto simple para aplicaciones.
 - Administración de usuarios
 - Roles de usuario
 
-## License
-
-Open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Ayuda de memoria.
+composer dump-autoload // Para que funcionen los seeders nuevos

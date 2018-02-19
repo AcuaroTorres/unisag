@@ -6,43 +6,40 @@
 
 @include('rrhh.submenu')
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-    	<h3 class="panel-title">Asignar roles a: <strong> {{ $user->name }} </strong> ({{ $user->runFormat() }})</h3>
-  	</div>
-  	<div class="panel-body">
+<h3>Asignar roles a: <strong> {{ $user->name }} </strong> ({{ $user->runFormat() }})</h3>
   		
-  		<form class="form-horizontal" method="POST" action="{{ route('rrhh.roles.attach',$user->id) }}">
-  			{{ csrf_field() }}
-			<input type="hidden" name="user_id" value="{{ $user->id }}">
-		
+<form class="form-horizontal" method="POST" action="{{ route('rrhh.roles.attach',$user->id) }}">
+	{{ csrf_field() }}
+	<input type="hidden" name="user_id" value="{{ $user->id }}">
 
-		<table class="table table-striped">
-			<thead>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
 				<th style="width: 100px">Seleccion</th>
-				<th>ID</th>
 				<th>Nombre</th>
 				<th>Descripcion</th>
-			</thead>
-			<tbody>
-				@foreach($roles as $rol)
-				<tr>
-					<td>
-						<center>
-							<input type="checkbox" name="roles[{{ $rol->id }}]" class="big-checkbox" @if($user->hasRole($rol->name)) checked @endif>
-						</center>
-					</td>
-					<td>{{ $rol->id }}</td>
-					<td>{{ $rol->name }}</td>
-					<td>{{ $rol->description }} </td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach($roles as $rol)
+			
+			<tr>
+				<td>
+					<div class="form-check">
+						<input class="form-check-input position-static" type="checkbox" name="roles[{{ $rol->id }}]" 
+						@if($user->hasRole($rol->name)) checked @endif>
+					</div>
+				</td>
+				<td>{{ $rol->name }}</td>
+				<td>{{ $rol->description }} </td>
+			</tr>
+			@endforeach
 
-		<input type="submit" class="btn btn-primary" name="btnGuardar" value="Guardar">
-		</form>
+		</tbody>
+	</table>
 
-	</div>
-</div>
+	<input type="submit" class="btn btn-primary" value="Guardar">
+</form>
+
 @endsection

@@ -4,47 +4,47 @@
 
 @section('content')
 
-	<form method="POST" class="form-horizontal" action="{{ route('password.update') }}">
-		{{ method_field('PUT') }} {{ csrf_field() }}
+<div class="row justify-content-md-center">
 
+    <div class="col-md-auto">
+	
 		<h3>Cambiar clave</h3>
-		<br>
 
-		<div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-			<label class="col-xs-3 col-sm-2 control-label" for="password">Clave Actual</label>
-			<div class="col-xs-9 col-sm-4"><input type="password" class="form-control" name="password" autofocus required="required"></div>
-			 @if ($errors->has('password'))
-			    <span class="help-block">
-			        <strong>{{ $errors->first('password') }}</strong>
-			    </span>
-			@endif
-		</div>
+		<form method="POST" action="{{ route('password.update') }}">
+			{{ method_field('PUT') }} {{ csrf_field() }}
 
-		<div class="form-group {{ $errors->has('newpassword') ? 'has-error' : '' }}">
-			<label class="col-xs-3 col-sm-2 control-label" for="newpassword">Nueva Clave</label>
-			<div class="col-xs-9 col-sm-4"><input type="password" class="form-control" name="newpassword" required="required"></div>
-			@if ($errors->has('newpassword'))
-			    <span class="help-block hidden-xs">
-			        <strong>{{ $errors->first('newpassword') }}</strong>
-			    </span>
-			@endif
-		</div>
+			<div class="form-group">
+				<label for="forClave">Clave Actual</label>
+				<input type="password" name="password" id="forClave" placeholder="Clave Actual" autofocus required="required"
+						class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}">
+				@if ($errors->has('password'))
+	    			<div class="invalid-feedback">{{ $errors->first('password') }}</div>
+	    		@endif
+	  		</div>
 
-		<div class="form-group {{ $errors->has('newpassword_confirm') ? 'has-error' : '' }}">
-			<label class="col-xs-3 col-sm-2 control-label" for="newpassword_confirm">Confirmar Nueva Clave</label>
-			<div class="col-xs-9 col-sm-4"><input type="password" class="form-control" name="newpassword_confirm" required="required"></div>
-			@if ($errors->has('newpassword_confirm'))
-			    <span class="help-block hidden-xs">
-			        <strong>{{ $errors->first('newpassword_confirm') }}</strong>
-			    </span>
-			@endif
-		</div>
+	 		<div class="form-group">
+				<label for="forClave">Nueva Clave</label>
+				<input type="password" name="newpassword" id="forNuevaClave" placeholder="Nueva Clave" autofocus required="required"
+						class="form-control {{ $errors->has('newpassword') ? 'is-invalid' : '' }}">
+				@if ($errors->has('newpassword'))
+	    			<div class="invalid-feedback">{{ $errors->first('newpassword') }}</div>
+	    		@endif
+	  		</div>
 
-		<div class="form-group">
-			<div class="col-xs-offset-3 col-xs-7 col-sm-offset-2 col-sm-10">
+	 		<div class="form-group">
+				<label for="forNuevaClaveConfirm">Confirmar Nueva Clave</label>
+				<input type="password" name="newpassword_confirm" id="forNuevaClaveConfirm" placeholder="Confirmar Nueva Clave" autofocus required="required"
+						class="form-control {{ $errors->has('newpassword_confirm') ? 'is-invalid' : '' }}">
+				@if ($errors->has('newpassword_confirm'))
+	    			<div class="invalid-feedback">{{ $errors->first('newpassword_confirm') }}</div>
+	    		@endif
+	  		</div>
+
 			<input type="submit" name="" class="btn btn-primary" value="Cambiar Clave">
-			</div>
-		</div>
 
-	</form>
+		</form>
+
+	</div>
+	
+</div>
 @endsection

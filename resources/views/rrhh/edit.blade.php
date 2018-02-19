@@ -10,41 +10,37 @@
 		{{ method_field('PUT') }} {{ csrf_field() }}
 
 		<div class="form-group">
-			<label class="col-xs-2 col-sm-2 control-label" for="name">Run</label>
-			<div class="col-xs-8 col-sm-8"><p class="form-control-static">{{$user->runFormat()}}</p></div>
+			<label for="run">RUN</label>
+			<input type="text" readonly class="form-control-plaintext" id="staticRUN" value="{{$user->runFormat()}}">
+  		</div>
+
+
+		<div class="form-group">
+			<label for="name">Nombre</label>
+			<input type="text" class="form-control" name="name" value="{{$user->name}}">
 		</div>
 
 		<div class="form-group">
-			<label class="col-xs-2 col-sm-2 control-label" for="name">Nombre</label>
-			<div class="col-xs-8 col-sm-8"><input type="text" class="form-control" name="name" value="{{$user->name}}"></div>
+			<label for="email">Correo</label>
+			<input type="email" class="form-control" name="email" value="{{$user->email}}">
 		</div>
 
 		<div class="form-group">
-			<label class="col-xs-2 col-sm-2 control-label" for="email">Correo</label>
-			<div class="col-xs-8 col-sm-8"><input type="email" class="form-control" name="email" value="{{$user->email}}"></div>
-		</div>
-
-		<div class="form-group">
-			<div class="col-xs-4 col-sm-2 col-sm-offset-2">
-				<button type="submit" class="btn btn-sm btn-primary">
-					<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Actualizar</button>
-			</div>
+			<button type="submit" class="btn btn-sm btn-primary">
+				<span class="fa fa-save" aria-hidden="true"></span> Actualizar</button>
+	</form>
 			
-			</form>
-			
-			<div class="col-xs-4 col-sm-2">
-				<form method="POST" action="{{ route('rrhh.users.password.reset', $user->id) }}" style="display: inline;">
-					{{ method_field('PUT') }} {{ csrf_field() }}
-					<button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restaurar clave</button>
-				</form>
-			</div>
+		<form method="POST" action="{{ route('rrhh.users.password.reset', $user->id) }}" style="display: inline;">
+			{{ method_field('PUT') }} {{ csrf_field() }}
+			<button class="btn btn-sm btn-outline-secondary ml-4"><span class="fa fa-repeat" aria-hidden="true"></span> Restaurar clave</button>
+		</form>
 
-			<div class="col-xs-4 col-sm-2">
-				<form method="POST" action="{{ route('rrhh.users.destroy', $user->id) }}" style="display: inline;">
-					{{ method_field('DELETE') }} {{ csrf_field() }}
-					<button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</button>
-				</form>
-			</div>
+
+		<form method="POST" action="{{ route('rrhh.users.destroy', $user->id) }}" style="display: inline;">
+			{{ method_field('DELETE') }} {{ csrf_field() }}
+			<button class="btn btn-sm btn-danger ml-4"><span class="fa fa-trash" aria-hidden="true"></span> Eliminar</button>
+		</form>
+
 		</div>
 
 @endsection
