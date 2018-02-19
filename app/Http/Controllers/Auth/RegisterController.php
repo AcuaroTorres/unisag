@@ -75,4 +75,8 @@ class RegisterController extends Controller
         */
         $user->roles()->attach(Role::where('name','Usuario')->first());
     }
+
+    public function showRegistrationForm(){
+        return redirect()->route('login');
+    }
 }

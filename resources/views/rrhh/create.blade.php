@@ -7,46 +7,40 @@
 <h3>Nuevo usuario</h3>
 
 <form method="POST" action="{{ route('rrhh.users.store') }}">
-  {{ csrf_field() }}
+	{{ csrf_field() }}
+	
+	<div class="row">
+		<div class="col-4">
 
-  <div class="form-group row">
+			<fieldset class="form-group">
+				<label for="formGroupIDInput">ID</label>
+				<input type="number" class="form-control" id="formGroupIDInput" name="id" required="required" value="min="{6" min="{6"} max="99999999" step="">
+			</fieldset>
 
-    <label for="inputId" class="col-sm-2 col-form-label">ID</label>
-    <div class="col-sm-6">
-      <input type="number" name="id" class="form-control" id="inputId" required="required" value="min="{6" min="{6"} max="99999999" step="">
-    </div>
+		</div>
+		<div class="col-2">
 
-    <label for="inputDv" class="col-sm-2 col-form-label">DV</label>
-    <div class="col-sm-2">
-      <input type="text" name="dv" id="inputDv" class="form-control" required="required" title="Digito verificador">
-    </div>
+			<fieldset class="form-group">
+				<label for="formGroupDVInput">DV</label>
+				<input type="text" class="form-control" id="formGroupDVInput" name="dv" required="required" title="Digito verificador">
+			</fieldset>
 
-  </div>
+		</div>
+	</div>
+	
+	<fieldset class="form-group">
+		<label for="formGroupNameInput">Nombre</label>
+		<input type="text" class="form-control" id="formGroupNameInput" placeholder="Nombre" name="name" required="required">
+	</fieldset>
 
-  <div class="form-group row">
-    <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
-    <div class="col-sm-10">
-      <input type="text" name="name" class="form-control" id="inputNombre" required="required" placeholder="Nombre">
-    </div>
-  </div>
+	<fieldset class="form-group">
+		<label for="formGroupEmailInput">Email</label>
+		<input type="email" class="form-control" id="formGroupEmailInput" placeholder="Email" name="email" required="required">
+	</fieldset>
 
-  <div class="form-group row">
-    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" name="email" class="form-control" id="inputEmail" required="required" placeholder="Email">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-10 offset-sm-2">
-      <button type="submit" class="btn btn-primary">Crear</button>
-    </div>
-  </div>
+	<button type="submit" class="btn btn-primary">Crear</button>
 
 </form>
-
-
-
 
 
 <script type="text/javascript">
@@ -77,4 +71,5 @@
 
   calculaDigitoVerificador("4678982");
 </script>
+
 @endsection
