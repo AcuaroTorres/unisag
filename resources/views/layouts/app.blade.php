@@ -21,8 +21,8 @@
     <!-- Custom Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- Iconos -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font Awesome - load everything-->
+    <script defer src="{{ asset('vendor/fontawesome/js/fontawesome-all.min.js') }}"></script>
 </head>
 <body>
     

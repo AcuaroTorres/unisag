@@ -9,7 +9,7 @@
 		<div class="form-group">
 			<input type="text" name="name" placeholder="Buscar usuario por nombre" id="inputUsuario" class="form-control" >
 			<button class="btn btn-primary" type="submit">
-		    	<span class="fa fa-search" aria-hidden="true"></span>
+		    	<span class="fas fa-search" aria-hidden="true"></span>
 			</button>
 		</div>
 	</form>
@@ -38,7 +38,7 @@
 			</td>
 			<td>
 				<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-warning">
-				<span class="fa fa-edit" aria-hidden="true"></span></a>			
+				<span class="fas fa-edit" aria-hidden="true"></span></a>			
 			</td>
 		</tr>
 		@endforeach

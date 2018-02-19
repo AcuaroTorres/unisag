@@ -27,18 +27,18 @@
 
 		<div class="form-group">
 			<button type="submit" class="btn btn-sm btn-primary">
-				<span class="fa fa-save" aria-hidden="true"></span> Actualizar</button>
+				<span class="fas fa-save" aria-hidden="true"></span> Actualizar</button>
 	</form>
 			
 		<form method="POST" action="{{ route('rrhh.users.password.reset', $user->id) }}" style="display: inline;">
 			{{ method_field('PUT') }} {{ csrf_field() }}
-			<button class="btn btn-sm btn-outline-secondary ml-4"><span class="fa fa-repeat" aria-hidden="true"></span> Restaurar clave</button>
+			<button class="btn btn-sm btn-outline-secondary ml-4"><span class="fas fa-redo" aria-hidden="true"></span> Restaurar clave</button>
 		</form>
 
 
 		<form method="POST" action="{{ route('rrhh.users.destroy', $user->id) }}" style="display: inline;">
 			{{ method_field('DELETE') }} {{ csrf_field() }}
-			<button class="btn btn-sm btn-danger ml-4"><span class="fa fa-trash" aria-hidden="true"></span> Eliminar</button>
+			<button class="btn btn-sm btn-danger ml-4"><span class="fas fa-trash" aria-hidden="true"></span> Eliminar</button>
 		</form>
 
 		</div>
