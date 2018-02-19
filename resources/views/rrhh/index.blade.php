@@ -4,16 +4,16 @@
 
 @section('content')
 
-<div class="row justify-content-end">
-	<form class="form-inline" method="GET" action="{{ route('rrhh.users.index') }}">
-		<div class="form-group">
-			<input type="text" name="name" placeholder="Buscar usuario por nombre" id="inputUsuario" class="form-control" >
-			<button class="btn btn-primary" type="submit">
-		    	<span class="fas fa-search" aria-hidden="true"></span>
-			</button>
+
+<form class="form-inline float-right" method="GET" action="{{ route('rrhh.users.index') }}">
+	<div class="input-group mb-3">
+		<input type="text" name="name" class="form-control" placeholder="Buscar usuario por nombre">
+		<div class="input-group-append">
+			<button class="btn btn-outline-secondary" type="button"><span class="fas fa-search" aria-hidden="true"></span></button>
 		</div>
-	</form>
-</div>
+	</div>
+</form>
+
 
 <br>
 
